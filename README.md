@@ -17,7 +17,7 @@
 * 支持网格、坐标轴等基础场景元素显示
 * 可通过 Qt 界面灵活配置坐标系与显示内容
 ## 🖼️ 界面预览
-![运行演示](src/qt_rviz2_gui/image/output.gif)
+![运行演示](https://github.com/cheng9911/qt_rviz2_gui/raw/main/src/qt_rviz2_gui/image/output.gif)
 ---
 
 ## 主要功能
