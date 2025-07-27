@@ -75,6 +75,6 @@ ros2 launch qt_rviz2_gui  display.launch.py
 ---
 
 ## 联系方式
-
+如果你觉得这个项目对你有帮助，请给个 ⭐ Star 支持一下吧，谢谢！
 如有问题或建议，欢迎提交 Issue 或联系作者：
 
