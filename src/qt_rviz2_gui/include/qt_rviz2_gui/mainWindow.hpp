@@ -1,3 +1,12 @@
+/**
+  ******************************************************************************
+  * @file           : mainWindow.hpp
+  * @author         : sun
+  * @brief          : None
+  * @attention      : None
+  * @date           : 7/27/25
+  ******************************************************************************
+  */
 #ifndef MAINWINDOW_HPP
 #define MAINWINDOW_HPP
 
@@ -52,49 +61,36 @@ private slots:
 private:
 void sendJoystickCommand();              // Sends cmd_vel based on button input
     void updateFrame();                      // Slot to update the reference frame
-    void updateMapReceivedIndicator(bool received);  // Updates the map received indicator in the GUI
-    void initializeRViz();                   // Initializes RViz components
-    //void DisplayGrid();                      // Sets up the grid and TF displays
-    //void setupRobotModel();                  // Sets up the robot model display
-    void setupJoystickControls();            // Initializes joystick buttons for movement control
-    //void setupMapSubscriber();               // Sets up the map subscriber to listen for map data
-    
-    
     
     void setupGridDisplay();
     void setupTFDisplay();
-    void setupMapDisplay();
+  
     void setupRobotModelDisplay();
-    void setupMapSubscriber();
-    void setupLaserScanDisplay();
+    bool eventFilter(QObject* obj, QEvent* event) override; // 声明事件过滤器
+
+   
 
     QApplication *app_;
     QWidget *centralWidget_;
     QVBoxLayout *mainLayout_;
     QLineEdit *frameLineEdit_;               // Text box for the reference frame
-    QLabel *mapReceivedIndicator_;           // Indicator for map reception status
     
     rviz_common::RenderPanel *renderPanel_=nullptr; // Render panel for RViz visualization
     rviz_common::Display *grid_;             // Grid display object
     rviz_common::Display *tf_display_;       // TF display object
-    rviz_common::Display *map_display_;      // Map display object
+   
     rviz_common::Display *robot_model_display_; // RobotModel display object
     rviz_common::VisualizationManager *manager_=nullptr;
 
     // ROS node and publisher for /cmd_vel
     rviz_common::ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node_;
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmdVelPublisher_;
-    geometry_msgs::msg::Twist currentTwist_;
-
-    // Joystick buttons
-    QPushButton *forwardButton_;
-    QPushButton *backwardButton_;
-    QPushButton *leftButton_;
-    QPushButton *rightButton_;
-    QPushButton *stopButton_;
     
-    rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr mapSubscriber_; // Subscriber for map data
-    bool mapReceived_;                       // Boolean flag to track map data reception
+    
+
+    
+    
+    
+    
 };
 
 #endif // MAINWINDOW_HPP
