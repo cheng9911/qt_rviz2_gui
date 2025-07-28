@@ -41,11 +41,20 @@ set(headers_to_moc
 foreach(header "${headers_to_moc}")
   qt5_wrap_cpp(moc_files "${header}")
 endforeach()
-
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/ui)
+file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h *.hpp)
+file(GLOB UI_FILES ${CMAKE_CURRENT_SOURCE_DIR}/ui/*.ui)
+file(GLOB RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/resources/*.qrc)
 set(SRC_FILES
   src/mainWindow.cpp
   src/main.cpp
   ${moc_files}
+  ${UI_FILES}
+  ${RESOURCES}
+  ${HEADERS}
 )
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})
@@ -60,6 +69,7 @@ target_link_libraries(${PROJECT_NAME}
   rviz_rendering::rviz_rendering
   rviz_ogre_vendor::OgreMain
   rviz_ogre_vendor::OgreOverlay
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 ## Install

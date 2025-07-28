@@ -38,7 +38,9 @@ QT_END_NAMESPACE
 namespace rviz_common {
 class Display;
 }
-
+namespace Ui {
+class MainWindow;
+}
 class MainWindow : public QMainWindow, public rviz_common::WindowManagerInterface {
     Q_OBJECT
 
@@ -59,7 +61,7 @@ private slots:
     
     void onInitializeRViz();   // 真正初始化槽
 private:
-void sendJoystickCommand();              // Sends cmd_vel based on button input
+    void sendJoystickCommand();              // Sends cmd_vel based on button input
     void updateFrame();                      // Slot to update the reference frame
     
     void setupGridDisplay();
@@ -69,11 +71,9 @@ void sendJoystickCommand();              // Sends cmd_vel based on button input
     bool eventFilter(QObject* obj, QEvent* event) override; // 声明事件过滤器
 
    
-
+    Ui::MainWindow *ui;
     QApplication *app_;
-    QWidget *centralWidget_;
-    QVBoxLayout *mainLayout_;
-    QLineEdit *frameLineEdit_;               // Text box for the reference frame
+   
     
     rviz_common::RenderPanel *renderPanel_=nullptr; // Render panel for RViz visualization
     rviz_common::Display *grid_;             // Grid display object

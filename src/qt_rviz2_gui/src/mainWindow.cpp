@@ -22,49 +22,20 @@
 #include <QDebug>
 #include <rviz_common/tool_manager.hpp>
 #include <rviz_common/view_manager.hpp>
-
+#include "ui_mainwindow.h"
 MainWindow::MainWindow(QApplication *app, rviz_common::ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node, QWidget *parent)
-    : QMainWindow(parent), app_(app), rviz_ros_node_(rviz_ros_node)
+    : QMainWindow(parent), app_(app), rviz_ros_node_(rviz_ros_node),ui(new Ui::MainWindow)
 {
     setWindowTitle("ROS2 Qt RViz");
-    renderPanel_ = new rviz_common::RenderPanel(this);
-    mainLayout_ = new QVBoxLayout;
-    centralWidget_ = new QWidget();
-
-    // Add frame input box and button
-    // QLabel *frameLabel = new QLabel("Reference Frame:");
-    frameLineEdit_ = new QLineEdit("base");
-    QPushButton *updateFrameButton = new QPushButton("Update Frame");
-    connect(updateFrameButton, &QPushButton::clicked, this, &MainWindow::updateFrame);
-    // mainLayout_->addWidget(frameLabel);
-    mainLayout_->addWidget(frameLineEdit_);
-    mainLayout_->addWidget(updateFrameButton);
-    mainLayout_->addWidget(renderPanel_); // Add the render panel here
-
-    centralWidget_->setLayout(mainLayout_);
-    setCentralWidget(centralWidget_);
-    centralWidget_->installEventFilter(this); // 关键安装代码
-    // frameLineEdit_->setFocusPolicy(Qt::ClickFocus); // 仅点击时才拿焦点
-    // updateFrameButton->setFocusPolicy(Qt::ClickFocus);
+    ui->setupUi(this);
+    renderPanel_ = new rviz_common::RenderPanel(ui->renderPanelPlaceholder);
+    auto layout = new QVBoxLayout(ui->renderPanelPlaceholder);
+    ui->frameLineEdit->setText("base");
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->addWidget(renderPanel_);
+    connect(ui->updateFrameButton, &QPushButton::clicked, this, &MainWindow::updateFrame);
 }
-bool MainWindow::eventFilter(QObject *obj, QEvent *event)
-{
-    if (obj == centralWidget_)
-    { // 使用实际成员变量
-        switch (event->type())
-        {
-        case QEvent::MouseMove:
-        case QEvent::MouseButtonPress:
-        case QEvent::MouseButtonRelease:
-        case QEvent::Wheel:
-            QApplication::sendEvent(renderPanel_, event);
-            return true; // 拦截事件避免重复处理
-        default:
-            break;
-        }
-    }
-    return QMainWindow::eventFilter(obj, event);
-}
+
 void MainWindow::onInitializeRViz()
 {
     auto node = rviz_ros_node_.lock();
@@ -93,7 +64,7 @@ void MainWindow::onInitializeRViz()
     } });
     QTimer::singleShot(50, this, [this]
                        {
-        QString frame = frameLineEdit_->text();
+        QString frame = ui->frameLineEdit->text();
         manager_->setFixedFrame(frame);
         manager_->getRootDisplayGroup()->setFixedFrame(frame);
 
@@ -150,6 +121,10 @@ MainWindow::~MainWindow()
         delete manager_;
         manager_ = nullptr;
     }
+    delete ui;
+    if (rclcpp::ok()) {
+        rclcpp::shutdown();
+    }
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -180,7 +155,7 @@ void MainWindow::setStatus(const QString &message)
 
 void MainWindow::setupGridDisplay()
 {
-    QString frame_id = frameLineEdit_->text();
+    QString frame_id = ui->frameLineEdit->text();
 
     // Initialize the grid display
     grid_ = manager_->createDisplay("rviz_default_plugins/Grid", "Grid", true);
@@ -218,7 +193,7 @@ void MainWindow::setupRobotModelDisplay()
     robot_model_display_ = manager_->createDisplay("rviz_default_plugins/RobotModel", "RobotModel Display", true);
     if (robot_model_display_)
     {
-        robot_model_display_->subProp("Description Topic")->setValue("/tb3_0/robot_description"); // Set the topic to /robot_description
+        robot_model_display_->subProp("Description Topic")->setValue("/robot_description"); // Set the topic to /robot_description
         robot_model_display_->subProp("TF Prefix")->setValue("");                                 // Set TF prefix to empty if needed /tb3_0/robot_description
         qDebug() << "RobotModel display configured for /robot_description topic.";
     }
@@ -230,7 +205,7 @@ void MainWindow::setupRobotModelDisplay()
 
 void MainWindow::updateFrame()
 {
-    QString frame_id = frameLineEdit_->text();
+    QString frame_id = ui->frameLineEdit->text();
     // // 添加线程安全检测
     // Update the grid display's reference frame
     if (grid_)
