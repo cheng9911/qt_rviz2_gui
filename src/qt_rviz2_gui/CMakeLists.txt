@@ -70,6 +70,7 @@ target_link_libraries(${PROJECT_NAME}
   rviz_ogre_vendor::OgreMain
   rviz_ogre_vendor::OgreOverlay
   ${CMAKE_CURRENT_SOURCE_DIR}/include
+  
 )
 
 ## Install

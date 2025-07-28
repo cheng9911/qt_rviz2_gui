@@ -61,14 +61,14 @@ private slots:
     
     void onInitializeRViz();   // 真正初始化槽
 private:
-    void sendJoystickCommand();              // Sends cmd_vel based on button input
-    void updateFrame();                      // Slot to update the reference frame
+    void sendJoystickCommand();              // 
+    void updateFrame();                      // 
     
     void setupGridDisplay();
     void setupTFDisplay();
   
     void setupRobotModelDisplay();
-    bool eventFilter(QObject* obj, QEvent* event) override; // 声明事件过滤器
+    // bool eventFilter(QObject* obj, QEvent* event) override; // 声明事件过滤器
 
    
     Ui::MainWindow *ui;

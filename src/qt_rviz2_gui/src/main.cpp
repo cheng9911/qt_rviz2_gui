@@ -15,7 +15,7 @@
 int main(int argc, char *argv[]) {
     rclcpp::init(argc, argv);
     QApplication app(argc, argv);
-     QLoggingCategory::setFilterRules("qt.qpa.input=true");   // 打开输入事件日
+    //  QLoggingCategory::setFilterRules("qt.qpa.input=true");   // 打开输入事件日
  std::cout << "RViz Render Node started." << std::endl;
     auto ros_node_abs = std::make_shared<rviz_common::ros_integration::RosNodeAbstraction>("rviz_render_node");
  std::cout << "RViz Render Node started." << std::endl;
