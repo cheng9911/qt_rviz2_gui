@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="qt6_ros2_template">
+  <link
+    name="base_link">
+    
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link_1">
+    <inertial>
+      <origin
+        xyz="-0.0105310918325694 4.90582989232102E-08 -0.00292754211686709"
+        rpy="0 0 0" />
+      <mass
+        value="0.288718424431375" />
+      <inertia
+        ixx="0.000830012890791525"
+        ixy="-9.50020283876626E-09"
+        ixz="3.49771961840243E-05"
+        iyy="0.000865113647682648"
+        iyz="9.45868198457207E-09"
+        izz="0.000861024544001763" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_1"
+    type="continuous">
+    <origin
+      xyz="0 0 0.215"
+      rpy="0 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2.84"
+      upper="2.84"
+      effort="30.0"
+      velocity="3.0" />
+    <hardware id="0" type="driver">
+            <limit lower="-2.84" upper="2.84"  vel="3.0" acc="10.0" jerk="150.0" effort="30.0"/>
+            <transform ratio="1.0" offset_pos_cnt="0" cnt_per_unit="20860.757" torque_per_unit="1.0"
+                       user_unit_name="rad"/>
+            
+            <inputs name="Inputs">
+                <status_word>Status word</status_word>
+                <position_actual_value>Actual motor position</position_actual_value>
+                <velocity_actual_value>Actual motor velocity</velocity_actual_value>
+                <torque_actual_value>Torque actual value</torque_actual_value>
+                
+            </inputs>
+            <outputs name="Outputs">
+                <control_word>Control word</control_word>
+                
+                <target_position>Profile target position</target_position>
+               
+            </outputs>        
+        </hardware>
+  </joint>
+  <link
+    name="link_2">
+    <inertial>
+      <origin
+        xyz="0.00818837377120979 4.13023930889711E-08 -0.00133142949197695"
+        rpy="0 0 0" />
+      <mass
+        value="0.250443795772637" />
+      <inertia
+        ixx="0.00067723075039654"
+        ixy="-1.04853194027878E-09"
+        ixz="1.6666286825051E-05"
+        iyy="0.00072875319290561"
+        iyz="3.23005364512059E-10"
+        izz="0.000761069738309094" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_2"
+    type="continuous">
+    <origin
+      xyz="-0.13 0 0"
+      rpy="1.5707963267949 0 1.5707963267949" />
+    <parent
+      link="link_1" />
+    <child
+      link="link_2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.84"
+      upper="2.84"
+      effort="30.0"
+      velocity="3.0" />
+    <hardware id="1" type="driver">
+            <limit lower="-2.84" upper="2.84"  vel="3.0" acc="10.0" jerk="150.0" effort="30.0"/>
+            <transform ratio="1.0" offset_pos_cnt="0" cnt_per_unit="20860.757" torque_per_unit="1.0"
+                       user_unit_name="rad"/>
+            
+            <inputs name="Inputs">
+                <status_word>Status word</status_word>
+                <position_actual_value>Actual motor position</position_actual_value>
+                <velocity_actual_value>Actual motor velocity</velocity_actual_value>
+                <torque_actual_value>Torque actual value</torque_actual_value>
+                
+            </inputs>
+            <outputs name="Outputs">
+                <control_word>Control word</control_word>
+                
+                <target_position>Profile target position</target_position>
+               
+            </outputs>        
+        </hardware>
+  </joint>
+  <link
+    name="link_3">
+    <inertial>
+      <origin
+        xyz="0.309749993285017 -6.34481429508185E-05 -6.27027735289332E-11"
+        rpy="3.1415926 0 0" />
+      <mass
+        value="1.47702556998399" />
+      <inertia
+        ixx="0.0032547793142003"
+        ixy="8.70740111090491E-07"
+        ixz="4.49345838154661E-06"
+        iyy="0.00741753840774171"
+        iyz="-2.86640866310431E-09"
+        izz="0.00774922897440421" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="3.1415926 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_3"
+    type="continuous">
+    <origin
+      xyz="0.1575 0 0"
+      rpy="3.14159265358979 -1.5707963267949 0" />
+    <parent
+      link="link_2" />
+    <child
+      link="link_3" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2.84"
+      upper="2.84"
+      effort="30.0"
+      velocity="3.0" />
+    <hardware id="2" type="driver">
+            <limit lower="-2.84" upper="2.84"  vel="3.0" acc="10.0" jerk="150.0" effort="30.0"/>
+            <transform ratio="1.0" offset_pos_cnt="0" cnt_per_unit="20860.757" torque_per_unit="1.0"
+                       user_unit_name="rad"/>
+            
+            <inputs name="Inputs">
+                <status_word>Status word</status_word>
+                <position_actual_value>Actual motor position</position_actual_value>
+                <velocity_actual_value>Actual motor velocity</velocity_actual_value>
+                <torque_actual_value>Torque actual value</torque_actual_value>
+                
+            </inputs>
+            <outputs name="Outputs">
+                <control_word>Control word</control_word>
+                
+                <target_position>Profile target position</target_position>
+               
+            </outputs>        
+        </hardware>
+  </joint>
+  <link
+    name="link_4">
+    <inertial>
+      <origin
+        xyz="0.318229405631409 -6.61859662832304E-05 -0.00215365262817152"
+        rpy="0 0 0" />
+      <mass
+        value="1.43716974653283" />
+      <inertia
+        ixx="0.00327489413788111"
+        ixy="8.73093497517207E-07"
+        ixz="7.72630910976572E-06"
+        iyy="0.00743366696816357"
+        iyz="-7.15451479019264E-09"
+        izz="0.00761681273339886" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_4"
+    type="continuous">
+    <origin
+      xyz="0.619499986380939 -0.000129900022494016 0.150000000000003"
+      rpy="3.1415926 0 -3.14159265358979" />
+    <parent
+      link="link_3" />
+    <child
+      link="link_4" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2.84"
+      upper="2.84"
+      effort="30.0"
+      velocity="3.0" />
+    <hardware id="3" type="driver">
+            <limit lower="-2.84" upper="2.84"  vel="3.0" acc="10.0" jerk="150.0" effort="30.0"/>
+            <transform ratio="1.0" offset_pos_cnt="0" cnt_per_unit="20860.757" torque_per_unit="1.0"
+                       user_unit_name="rad"/>
+            
+            <inputs name="Inputs">
+                <status_word>Status word</status_word>
+                <position_actual_value>Actual motor position</position_actual_value>
+                <velocity_actual_value>Actual motor velocity</velocity_actual_value>
+                <torque_actual_value>Torque actual value</torque_actual_value>
+                
+            </inputs>
+            <outputs name="Outputs">
+                <control_word>Control word</control_word>
+                
+                <target_position>Profile target position</target_position>
+               
+            </outputs>        
+        </hardware>
+  </joint>
+  <link
+    name="link_5">
+    <inertial>
+      <origin
+        xyz="-0.00133141583270169 -3.81853762776441E-08 0.00818836736209475"
+        rpy="0 0 0" />
+      <mass
+        value="0.250443770512977" />
+      <inertia
+        ixx="0.00076106953156274"
+        ixy="8.23706019692372E-10"
+        ixz="1.6666580405583E-05"
+        iyy="0.000728752381486289"
+        iyz="-1.40849553230592E-09"
+        izz="0.000677231288568854" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_5"
+    type="continuous">
+    <origin
+      xyz="0.619499986380938 -0.000129900022494141 -0.157499999999998"
+      rpy="0 0 3.14159265358979" />
+    <parent
+      link="link_4" />
+    <child
+      link="link_5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.84"
+      upper="2.84"
+      effort="30.0"
+      velocity="3.0" />
+    <hardware id="4" type="driver">
+            <limit lower="-2.84" upper="2.84"  vel="3.0" acc="10.0" jerk="150.0" effort="30.0"/>
+            <transform ratio="1.0" offset_pos_cnt="0" cnt_per_unit="20860.757" torque_per_unit="1.0"
+                       user_unit_name="rad"/>
+            
+            <inputs name="Inputs">
+                <status_word>Status word</status_word>
+                <position_actual_value>Actual motor position</position_actual_value>
+                <velocity_actual_value>Actual motor velocity</velocity_actual_value>
+                <torque_actual_value>Torque actual value</torque_actual_value>
+                
+            </inputs>
+            <outputs name="Outputs">
+                <control_word>Control word</control_word>
+                
+                <target_position>Profile target position</target_position>
+               
+            </outputs>        
+        </hardware>
+  </joint>
+  <link
+    name="link_6">
+    <inertial>
+      <origin
+        xyz="-0.00292754223166557 -4.90956496568273E-08 -0.0105310917966979"
+        rpy="0 0 0" />
+      <mass
+        value="0.288718423955998" />
+      <inertia
+        ixx="0.00086102431956387"
+        ixy="-1.13536731000631E-08"
+        ixz="3.49764745595416E-05"
+        iyy="0.000865110637037024"
+        iyz="1.12159352723379E-08"
+        izz="0.000830013622618324" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_6"
+    type="continuous">
+    <origin
+      xyz="0.13 0 0"
+      rpy="1.5707963267949 0 1.5707963267949" />
+    <parent
+      link="link_5" />
+    <child
+      link="link_6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.84"
+      upper="2.84"
+      effort="30.0"
+      velocity="3.0" />
+    <hardware id="5" type="driver">
+            <limit lower="-2.84" upper="2.84"  vel="3.0" acc="10.0" jerk="150.0" effort="30.0"/>
+            <transform ratio="1.0" offset_pos_cnt="0" cnt_per_unit="20860.757" torque_per_unit="1.0"
+                       user_unit_name="rad"/>
+            
+            <inputs name="Inputs">
+                <status_word>Status word</status_word>
+                <position_actual_value>Actual motor position</position_actual_value>
+                <velocity_actual_value>Actual motor velocity</velocity_actual_value>
+                <torque_actual_value>Torque actual value</torque_actual_value>
+                
+            </inputs>
+            <outputs name="Outputs">
+                <control_word>Control word</control_word>
+                
+                <target_position>Profile target position</target_position>
+               
+            </outputs>        
+        </hardware>
+  </joint>
+  <link
+    name="link_7">
+    <inertial>
+      <origin
+        xyz="-0.0068887856214811 3.22463828096309E-05 0.0595052168539268"
+        rpy="0 0 0" />
+      <mass
+        value="0.433804451599703" />
+      <inertia
+        ixx="0.000820767764486695"
+        ixy="4.69231112836611E-07"
+        ixz="-2.78882019105804E-05"
+        iyy="0.000921013040979529"
+        iyz="1.30517915627203E-07"
+        izz="0.0011751907799355" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://qt6_ros2_template/meshes/link_7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_7"
+    type="continuous">
+    <origin
+      xyz="-0.215 0 0"
+      rpy="0 1.5707963267949 0" />
+    <parent
+      link="link_6" />
+    <child
+      link="link_7" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.84"
+      upper="2.84"
+      effort="30.0"
+      velocity="3.0" />
+    <hardware id="6" type="driver">
+            <limit lower="-2.84" upper="2.84"  vel="3.0" acc="10.0" jerk="150.0" effort="30.0"/>
+            <transform ratio="1.0" offset_pos_cnt="0" cnt_per_unit="20860.757" torque_per_unit="1.0"
+                       user_unit_name="rad"/>
+            
+            <inputs name="Inputs">
+                <status_word>Status word</status_word>
+                <position_actual_value>Actual motor position</position_actual_value>
+                <velocity_actual_value>Actual motor velocity</velocity_actual_value>
+                <torque_actual_value>Torque actual value</torque_actual_value>
+                
+            </inputs>
+            <outputs name="Outputs">
+                <control_word>Control word</control_word>
+                
+                <target_position>Profile target position</target_position>
+               
+            </outputs>        
+        </hardware>
+  </joint>
+</robot>
